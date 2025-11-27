@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Locator - Buscador de Lugares</title>
+    
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@3.2.12/dist/leaflet-routing-machine.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet-routing-machine@3.2.12/dist/leaflet-routing-machine.js"></script>
+    
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+    <link rel="stylesheet" href="../css/index.css"> 
+</head>
+<body>
+    <div class="main-container">
+        
+        <div class="left-panel">
+            <h2 class="form-header">Give some data so Locator can help</h2>
+
+            <div class="logo-box">
+                <img style="width: 100px; height: 100px; border-radius:40px;" src="../assets/Icons/Locat_r.png">
+            </div>
+            
+            <form id="search-form">
+                
+                <label for="nombre">Nombre</label>
+                <input type="text" id="nombre" name="nombre" placeholder="Ingresa tu nombre" required>
+
+                <label for="correo">Correo</label>
+                <input type="email" id="correo" name="correo" 
+                       placeholder="ejemplo@dominio.com" 
+                       required>
+
+                <label for="lugar">Lugar a buscar</label>
+                <input type="text" id="lugar" name="lugar" placeholder="Ej: Carrefour, McDonalds" required>
+
+                <label for="detalle">Detalle adicional (Opcional)</label>
+                <textarea id="detalle" name="detalle" placeholder="Ej: Arroyo Hondo, 24 horas..."></textarea>
+                
+                <button type="submit" class="search-button">Search</button>
+            </form>
+            
+            <div class="decoration-bottom"></div>
+        </div>
+
+        <div class="right-panel">
+            
+            <div class="search-results-area">
+                <h3 id="status-title" class="results-title">Searching...</h3>
+                
+                <div class="search-query-bar" id="bar-display">
+                    <span id="query-display"></span> 
+                </div>
+                
+                <div id="map-container">
+                    <p id="greeting-message">Resultados aparecerán aquí.</p>
+                </div>
+
+                <div id="routes-ui-container" style="display:none; margin-top: 15px;">
+                    <h4>Rutas disponibles (en rango):</h4>
+                    <div id="routes-list"></div>
+                </div>
+            </div>
+            <div class="decoration-top-right"></div>
+        </div>
+    </div>
+
+    <div id="location-modal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-icon">📍</div>
+            <h3>Necesitamos tu ubicación</h3>
+            <p>Para encontrar las mejores rutas, permite el acceso en tu navegador.</p>
+            <button id="btn-retry-location" class="modal-button">Intentar de nuevo</button>
+        </div>
+    </div>
+    
+    <script src="../js/index.js"></script>
+</body>
+</html>
